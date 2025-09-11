@@ -1,0 +1,635 @@
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --tiktok-red: #FF0050;
+            --tiktok-black: #000000;
+            --tiktok-white: #FFFFFF;
+            --tiktok-blue: #25F4EE;
+            --tiktok-pink: #FE2C55;
+            --tiktok-gray: #161823;
+            --light-gray: #F8F9FA;
+            --text-gray: #666666;
+        }
+
+        body {
+            font-family: 'Tajawal', Arial, sans-serif;
+            background-color: var(--tiktok-white);
+            color: var(--tiktok-black);
+            line-height: 1.7;
+            direction: rtl;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Section */
+        header {
+            background-color: var(--tiktok-black);
+            color: var(--tiktok-white);
+            padding: 60px 0 50px 0;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background-color: var(--tiktok-red);
+            color: var(--tiktok-white);
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .hero-title {
+            font-size: clamp(1.8rem, 6vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero-title .highlight {
+            color: var(--tiktok-red);
+            display: block;
+            margin-top: 8px;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            margin-bottom: 30px;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background-color: var(--tiktok-red);
+            color: var(--tiktok-white);
+            padding: 20px 45px;
+            text-decoration: none;
+            border-radius: 15px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 6px 20px rgba(255, 0, 80, 0.35), 0 3px 10px rgba(0,0,0,0.1);
+            margin: 15px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            min-width: 200px;
+            text-align: center;
+            border: 3px solid var(--tiktok-red);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s ease, height 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--tiktok-pink);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(255, 0, 80, 0.45), 0 4px 15px rgba(0,0,0,0.15);
+            color: var(--tiktok-white);
+            text-decoration: none;
+            border-color: var(--tiktok-pink);
+        }
+
+        .cta-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .cta-button:active {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 0, 80, 0.3);
+        }
+
+        /* Mobile Touch Enhancement */
+        @media (hover: none) and (pointer: coarse) {
+            .cta-button:active {
+                background-color: var(--tiktok-pink);
+                transform: scale(0.97);
+            }
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 50px 0;
+        }
+
+        .section-black {
+            background-color: var(--tiktok-black);
+            color: var(--tiktok-white);
+        }
+
+        .section-light {
+            background-color: var(--light-gray);
+        }
+
+        .section-title {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 900;
+            margin-bottom: 30px;
+            text-align: center;
+            line-height: 1.2;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--tiktok-red);
+            margin: 15px auto 0;
+            border-radius: 3px;
+        }
+
+        .section-black .section-title {
+            color: var(--tiktok-white);
+        }
+
+        .section-black .section-title::after {
+            background-color: var(--tiktok-blue);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background-color: var(--tiktok-red);
+            color: var(--tiktok-white);
+            padding: 60px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 30px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 40px 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            opacity: 0.95;
+        }
+
+        /* Steps Section */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .step-card {
+            background: var(--tiktok-white);
+            padding: 30px 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--tiktok-red);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .step-number {
+            background-color: var(--tiktok-red);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            font-weight: 900;
+            margin: 0 auto 20px auto;
+        }
+
+        .step-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--tiktok-black);
+        }
+
+        .step-description {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            font-weight: 400;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .feature-card {
+            background: var(--tiktok-gray);
+            color: var(--tiktok-white);
+            padding: 25px 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--tiktok-blue);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--tiktok-blue);
+            margin-bottom: 15px;
+        }
+
+        .feature-card:nth-child(2n) .feature-icon {
+            color: var(--tiktok-red);
+        }
+
+        .feature-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .feature-description {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--tiktok-white);
+            margin: 15px 0;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--tiktok-red);
+            transform: translateY(-3px);
+        }
+
+        .faq-question {
+            background: var(--light-gray);
+            padding: 20px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--tiktok-black);
+            border-right: 4px solid var(--tiktok-red);
+        }
+
+        .faq-question i {
+            font-size: 1.2rem;
+            color: var(--tiktok-red);
+            margin-left: 10px;
+        }
+
+        .faq-answer {
+            padding: 20px;
+            font-size: 1rem;
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            background-color: var(--tiktok-black);
+            color: var(--tiktok-white);
+            text-align: center;
+            padding: 60px 0;
+            position: relative;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background-color: var(--tiktok-red);
+        }
+
+        .final-cta h2 {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+
+        .final-cta p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .final-cta .cta-button {
+            font-size: 1.3rem;
+            padding: 20px 50px;
+            min-width: 250px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--tiktok-gray);
+            color: var(--tiktok-white);
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin: 5px 0;
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .section {
+                padding: 40px 0;
+            }
+
+            header {
+                padding: 40px 0 30px 0;
+            }
+
+            .hero-badge {
+                padding: 8px 20px;
+                font-size: 0.8rem;
+                margin-bottom: 15px;
+            }
+
+            .hero-title {
+                margin-bottom: 10px;
+            }
+
+            .hero-subtitle {
+                margin-bottom: 20px;
+            }
+
+            .cta-button {
+                padding: 15px 35px;
+                font-size: 1.1rem;
+                min-width: 180px;
+            }
+
+            .cta-section {
+                margin: 20px 0;
+            }
+
+            .section-title {
+                margin-bottom: 20px;
+            }
+
+            .features-grid,
+            .steps-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                margin-top: 20px;
+            }
+
+            .step-card,
+            .feature-card {
+                padding: 20px 15px;
+            }
+
+            .step-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+                margin-bottom: 15px;
+            }
+
+            .step-title,
+            .feature-title {
+                font-size: 1rem;
+                margin-bottom: 8px;
+            }
+
+            .step-description,
+            .feature-description {
+                font-size: 0.85rem;
+            }
+
+            .feature-icon {
+                font-size: 2rem;
+                margin-bottom: 10px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+                max-width: 600px;
+            }
+
+            .stat-item {
+                padding: 30px 15px;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .stat-item {
+                padding: 10px 5px;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+                margin-bottom: 5px;
+            }
+
+            .stat-label {
+                font-size: 0.85rem;
+            }
+
+            .faq-question,
+            .faq-answer {
+                padding: 15px;
+            }
+
+            .faq-question {
+                font-size: 1rem;
+            }
+
+            .faq-answer {
+                font-size: 0.9rem;
+            }
+
+            .final-cta {
+                padding: 40px 0;
+            }
+
+            .final-cta h2 {
+                margin-bottom: 15px;
+            }
+
+            .final-cta p {
+                margin-bottom: 20px;
+                font-size: 1rem;
+            }
+
+            .final-cta .cta-button {
+                font-size: 1.2rem;
+                padding: 18px 40px;
+                min-width: 200px;
+            }
+
+            footer {
+                padding: 20px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 10px;
+            }
+
+            .section {
+                padding: 30px 0;
+            }
+
+            header {
+                padding: 30px 0 25px 0;
+            }
+
+            .hero-title {
+                font-size: 1.6rem;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+                margin-bottom: 15px;
+            }
+
+            .cta-button {
+                padding: 12px 25px;
+                font-size: 1rem;
+                min-width: 160px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+                max-width: 400px;
+            }
+
+            .stat-item {
+                padding: 25px 10px;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .step-card,
+            .feature-card {
+                padding: 15px 10px;
+            }
+
+            .final-cta .cta-button {
+                font-size: 1.1rem;
+                padding: 15px 30px;
+                min-width: 180px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .hero-title {
+                font-size: 1.4rem;
+            }
+
+            .section-title {
+                font-size: 1.2rem;
+            }
+
+            .cta-button {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+                min-width: 140px;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+
+            .final-cta .cta-button {
+                font-size: 1rem;
+                padding: 12px 25px;
+                min-width: 160px;
+            }
+        }
+    </style>
