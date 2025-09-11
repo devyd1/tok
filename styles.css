@@ -1,0 +1,640 @@
+:root {
+    --tiktok-red: #FF0050;
+    --tiktok-black: #000000;
+    --tiktok-white: #FFFFFF;
+    --tiktok-blue: #25F4EE;
+    --tiktok-pink: #FE2C55;
+    --tiktok-gray: #161823;
+    --light-gray: #F8F9FA;
+    --text-gray: #666666;
+    --border-color: #E1E5E9;
+    --shadow: 0 2px 8px rgba(0,0,0,0.08);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
+    --radius: 12px;
+    --radius-lg: 16px;
+    --transition: 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Tajawal', sans-serif;
+    background: var(--tiktok-white);
+    color: var(--tiktok-black);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Main Container */
+.app {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px 16px;
+    position: relative;
+}
+
+/* Screen System */
+.screen {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.screen.active {
+    display: block;
+}
+
+/* Header Section */
+.header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--tiktok-red);
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    font-size: 15px;
+    color: var(--text-gray);
+    font-weight: 600;
+    line-height: 1.4;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+/* Stats Grid */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.stat {
+    background: var(--light-gray);
+    padding: 20px 12px;
+    border-radius: var(--radius);
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.stat:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--tiktok-red);
+}
+
+.stat-number {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--tiktok-red);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    font-size: 11px;
+    color: var(--text-gray);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Rewards System */
+.rewards-system {
+    background: var(--light-gray);
+    padding: 16px;
+    border-radius: var(--radius-lg);
+    margin-bottom: 24px;
+    border: 1px solid var(--border-color);
+}
+
+.rewards-title {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--tiktok-red);
+    margin-bottom: 8px;
+}
+
+.rewards-subtitle {
+    text-align: center;
+    font-size: 11px;
+    color: var(--text-gray);
+    font-weight: 600;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.rewards-list {
+    margin-bottom: 12px;
+}
+
+.reward-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 8px;
+    margin: 4px 0;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.reward-row:hover {
+    background: rgba(255, 0, 80, 0.05);
+}
+
+.reward-row.highlight {
+    background: var(--tiktok-red);
+    color: var(--tiktok-white);
+    font-weight: 700;
+}
+
+.reward-row.highlight:hover {
+    background: var(--tiktok-pink);
+}
+
+.score {
+    color: var(--text-gray);
+}
+
+.reward-row.highlight .score {
+    color: var(--tiktok-white);
+}
+
+.coins {
+    color: var(--tiktok-red);
+    font-weight: 700;
+}
+
+.reward-row.highlight .coins {
+    color: var(--tiktok-white);
+}
+
+.rewards-cta {
+    text-align: center;
+    font-size: 10px;
+    color: var(--text-gray);
+    font-weight: 600;
+    font-style: italic;
+}
+
+/* CTA Section */
+.cta {
+    margin-bottom: 20px;
+}
+
+.btn {
+    background: var(--tiktok-red);
+    color: var(--tiktok-white);
+    border: none;
+    padding: 18px 32px;
+    border-radius: var(--radius-lg);
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(255, 0, 80, 0.3), 0 2px 8px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--tiktok-red);
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.btn:hover {
+    background: var(--tiktok-pink);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 0, 80, 0.4), 0 3px 12px rgba(0,0,0,0.15);
+    border-color: var(--tiktok-pink);
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 10px rgba(255, 0, 80, 0.3);
+}
+
+.btn-secondary {
+    background: var(--tiktok-blue);
+    color: var(--tiktok-black);
+    border-color: var(--tiktok-blue);
+    box-shadow: 0 4px 15px rgba(37, 244, 238, 0.3), 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.btn-secondary:hover {
+    background: var(--tiktok-blue);
+    opacity: 0.9;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(37, 244, 238, 0.4), 0 3px 12px rgba(0,0,0,0.15);
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: var(--shadow);
+}
+
+.btn:disabled:hover {
+    transform: none;
+    background: var(--tiktok-red);
+}
+
+/* Mobile Touch Enhancement */
+@media (hover: none) and (pointer: coarse) {
+    .btn:active {
+        background: var(--tiktok-pink);
+        transform: scale(0.98);
+    }
+    
+    .btn-secondary:active {
+        opacity: 0.8;
+        transform: scale(0.98);
+    }
+}
+
+/* Trust Badges */
+.trust {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.trust-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-size: 11px;
+    color: var(--text-gray);
+    font-weight: 600;
+    padding: 8px 4px;
+}
+
+.trust-icon {
+    color: var(--tiktok-blue);
+    font-size: 12px;
+}
+
+/* Question Screen */
+.question-card {
+    background: var(--light-gray);
+    padding: 24px 20px;
+    border-radius: var(--radius-lg);
+    margin-bottom: 20px;
+    text-align: center;
+    border: 2px solid var(--border-color);
+    box-shadow: var(--shadow);
+}
+
+.question-meta {
+    font-size: 12px;
+    color: var(--text-gray);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.difficulty {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 800;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+}
+
+.difficulty-very-easy { background: #e3fff8; color: var(--tiktok-blue); }
+.difficulty-easy { background: #ffe0ec; color: var(--tiktok-red); }
+.difficulty-easy-plus { background: #fff3cd; color: var(--tiktok-pink); }
+.difficulty-medium { background: #f8d7da; color: var(--tiktok-red); }
+.difficulty-hard { background: var(--tiktok-black); color: var(--tiktok-white); }
+
+.question-text {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--tiktok-black);
+}
+
+/* Timer */
+.timer {
+    margin-bottom: 20px;
+}
+
+.timer-bar {
+    width: 100%;
+    height: 6px;
+    background: var(--border-color);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.timer-fill {
+    height: 100%;
+    background: var(--tiktok-red);
+    transition: width 0.1s linear;
+}
+
+.timer-text {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-gray);
+    font-weight: 600;
+}
+
+/* Answers */
+.answers {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.answer {
+    background: var(--light-gray);
+    border: 2px solid var(--border-color);
+    padding: 16px 20px;
+    border-radius: var(--radius);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: right;
+    font-family: inherit;
+    color: var(--tiktok-black);
+}
+
+.answer:hover {
+    border-color: var(--tiktok-red);
+    background: rgba(255, 0, 80, 0.05);
+    transform: translateX(-2px);
+}
+
+.answer:disabled {
+    cursor: not-allowed;
+}
+
+.answer.correct {
+    background: #10B981;
+    border-color: #10B981;
+    color: var(--tiktok-white);
+    animation: correctPulse 0.6s ease;
+}
+
+.answer.wrong {
+    background: var(--tiktok-red);
+    border-color: var(--tiktok-red);
+    color: var(--tiktok-white);
+    animation: wrongShake 0.6s ease;
+}
+
+/* Results Screen */
+.results {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.results-icon {
+    font-size: 64px;
+    margin-bottom: 16px;
+}
+
+.results-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--tiktok-red);
+    margin-bottom: 8px;
+}
+
+.results-subtitle {
+    font-size: 15px;
+    color: var(--text-gray);
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.reward {
+    background: var(--tiktok-red);
+    padding: 24px;
+    border-radius: var(--radius-lg);
+    margin-bottom: 24px;
+    border: 2px solid var(--tiktok-red);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(255, 0, 80, 0.3);
+}
+
+.reward-amount {
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--tiktok-white);
+    margin-bottom: 4px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.reward-label {
+    font-size: 12px;
+    color: var(--tiktok-white);
+    font-weight: 700;
+    text-transform: uppercase;
+    opacity: 0.95;
+}
+
+/* Form */
+.form {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    text-align: right;
+    text-transform: uppercase;
+    color: var(--tiktok-black);
+}
+
+.form-input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius);
+    font-size: 15px;
+    font-family: inherit;
+    transition: var(--transition);
+    text-align: right;
+    font-weight: 600;
+    background: var(--tiktok-white);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--tiktok-red);
+    box-shadow: 0 0 0 3px rgba(255, 0, 80, 0.1);
+}
+
+.form-input.error {
+    border-color: var(--tiktok-red);
+    box-shadow: 0 0 0 3px rgba(255, 0, 80, 0.1);
+}
+
+.error-message {
+    color: var(--tiktok-red);
+    font-size: 11px;
+    margin-top: 4px;
+    text-align: right;
+    font-weight: 600;
+}
+
+/* Loading Spinner */
+.loading {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s linear infinite;
+    margin-right: 8px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes correctPulse {
+    0% { transform: scale(1) translateX(-2px); }
+    50% { transform: scale(1.02) translateX(-2px); }
+    100% { transform: scale(1) translateX(-2px); }
+}
+
+@keyframes wrongShake {
+    0%, 100% { transform: translateX(-2px); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(0); }
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 375px) {
+    .app {
+        padding: 16px 12px;
+    }
+    
+    .title {
+        font-size: 24px;
+    }
+    
+    .subtitle {
+        font-size: 14px;
+    }
+    
+    .stat-number {
+        font-size: 20px;
+    }
+    
+    .feature-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+    
+    .trust-item {
+        font-size: 10px;
+        padding: 6px 2px;
+    }
+}
+
+@media (max-width: 320px) {
+    .stats {
+        gap: 8px;
+    }
+    
+    .stat {
+        padding: 16px 8px;
+    }
+
+    .rewards-system {
+        padding: 12px;
+    }
+
+    .rewards-title {
+        font-size: 12px;
+    }
+
+    .rewards-subtitle {
+        font-size: 10px;
+    }
+
+    .reward-row {
+        font-size: 10px;
+        padding: 4px 6px;
+    }
+
+    .rewards-cta {
+        font-size: 9px;
+    }
+    
+    .trust {
+        grid-template-columns: 1fr;
+        gap: 4px;
+        text-align: center;
+    }
+}
+
+/* Prevent unwanted spacing on larger screens */
+@media (min-height: 700px) {
+    .app {
+        padding-top: 40px;
+    }
+}
+
+@media (min-height: 800px) {
+    .app {
+        padding-top: 60px;
+    }
+}
