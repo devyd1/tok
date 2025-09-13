@@ -198,7 +198,7 @@ body {
 }
 
 .btn {
-    background: var(--tiktok-red);
+    background: var(--tiktok-ogee);
     color: var(--tiktok-white);
     border: none;
     padding: 18px 32px;
